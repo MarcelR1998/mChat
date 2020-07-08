@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCHAT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="scrollbar.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+</head>
+
+<body>
+
+    <nav>
+        <button id="hamburger">Menu</button>
+        <ul id="navList" class="hideMobileMenu">
+            <li class="changeRoomWrapper">
+                <input id="changeRoomInput" type="text" placeholder="Change room">
+                <button id="changeRoomButton" class="greenBtn">Go</button>
+            </li>
+
+            <li class="navItemWrapper">
+                <span class="idDisplaySpans">Room Id:</span>
+                <span class="idDisplaySpans" id="idDisplay"></span>
+            </li>
+            <li>
+                <button id="logOut" class="hidden greenBtn">Sign Out <i class="fas fa-sign-out-alt"></i></button>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="loginView" class="hidden">
+
+        <form id="login-form">
+            <img src="mchatLogo.svg" id="logo" />
+            <input class="loginFields" type="text" name="roomId" placeholder="Room Id">
+            <input class="loginFields" type="email" name="loginEmail" placeholder="Email">
+            <input class="loginFields" type="password" name="loginPassword" placeholder="Password">
+
+            <div id="loginSignupDiv">
+                <button id="logIn" class="greenBtn">Sign In <i class="fas fa-sign-in-alt"></i></button>
+                <button id="signUp" class="greenBtn">Sign up <i class="fas fa-user-plus"></i></button>
+            </div>
+            <p id="loginMessage"></p>
+        </form>
+    </div>
+
+    <main>
+        <div id="messageContainer">
+        </div>
+
+        <div class="hidden" id="emojiWindow">
+            <button type="button" class="sendButton emojiButton">🙂</button>
+            <button type="button" class="sendButton emojiButton">😀</button>
+            <button type="button" class="sendButton emojiButton">😁</button>
+            <button type="button" class="sendButton emojiButton">😂</button>
+            <button type="button" class="sendButton emojiButton">😅</button>
+            <button type="button" class="sendButton emojiButton">😊</button>
+            <button type="button" class="sendButton emojiButton">😋</button>
+            <button type="button" class="sendButton emojiButton">😎</button>
+            <button type="button" class="sendButton emojiButton">😍</button>
+            <button type="button" class="sendButton emojiButton">😘</button>
+            <button type="button" class="sendButton emojiButton">💕</button>
+            <button type="button" class="sendButton emojiButton">😠</button>
+            <button type="button" class="sendButton emojiButton">💩</button>
+            <button type="button" class="sendButton emojiButton">👽</button>
+            <button type="button" class="sendButton emojiButton">😭</button>
+            <button type="button" class="sendButton emojiButton">🤔</button>
+            <button type="button" class="sendButton emojiButton">👍</button>
+            <button type="button" class="sendButton emojiButton">👌</button>
+        </div>
+
+        <form id="send">
+            <input type="text" class="textInput" autocomplete="off" name="content">
+            <!--   <textarea class="textInput" name="content" rows="3" cols="30" placeholder="Skriv något"></textarea> -->
+            <button type="button" class="sendButton" id="openEmojis">🙂</button>
+            <button class="sendButton">Send</button>
+        </form>
+    </main>
+
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCHhJYgEbRGKCrjSAoD7BXP9D4eZ5gVthU",
+            authDomain: "chat-app-9a007.firebaseapp.com",
+            databaseURL: "https://chat-app-9a007.firebaseio.com",
+            projectId: "chat-app-9a007",
+            storageBucket: "chat-app-9a007.appspot.com",
+            messagingSenderId: "479246227806",
+            appId: "1:479246227806:web:5916b6ed26cef77c1957cf"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
